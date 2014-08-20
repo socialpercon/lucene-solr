@@ -298,9 +298,11 @@ public class SolrIndexSplitterTest extends SolrTestCaseJ4 {
     // find minHash/maxHash hash ranges
     byte[] bytes = id1.getBytes(StandardCharsets.UTF_8);
     int minHash = Hash.murmurhash3_x86_32(bytes, 0, bytes.length, 0);
+    
     bytes = id2.getBytes(StandardCharsets.UTF_8);
     int maxHash = Hash.murmurhash3_x86_32(bytes, 0, bytes.length, 0);
 
+    System.out.println(String.format("minHash : %d, maxHash : %d", minHash, maxHash));
     if (minHash > maxHash)  {
       int temp = maxHash;
       maxHash = minHash;
